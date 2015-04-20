@@ -41,12 +41,13 @@ private volatile long lastPoll = 0;
 			List<String> tracks = server.getResult();
 			lastPoll = System.currentTimeMillis();
 			// Convert each price into ticker = price form in UTF-8 as event body
-			//FIXME: Hasta aquí guay
-			for (Map.Entry<String, Float> e : tracks.entrySet()) {
+			/* FIXME: Hasta aquí guay
+			 * 	for (Map.Entry<String, Float> e : tracks.entrySet()) {
 				StringBuilder builder = new StringBuilder(e.getKey());
 				builder.append(" = ").append(e.getValue());
 				events.add(EventBuilder.withBody(builder.toString().getBytes(Charsets.UTF_8)));
-			}
+				}
+			 */
 		  getChannelProcessor().processEventBatch(events);
 		  status = Status.READY;
 		}
